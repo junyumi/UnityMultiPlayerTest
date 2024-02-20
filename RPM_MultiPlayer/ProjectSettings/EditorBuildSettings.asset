@@ -39,4 +39,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: d500afa535bfd674ba03c99382308b88
+  - enabled: 1
+    path: Assets/Scenes/AvatarControl_HY 6_Lobby.unity
+    guid: 3c287f22758202e498be0b0988d389fb
   m_configObjects: {}

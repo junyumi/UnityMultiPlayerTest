@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -36,7 +37,7 @@ public class ClientManager : MonoBehaviour
         }
     }
 
-    public async void StartClient(string joinCode)
+    public async Task StartClient(string joinCode)
     {
         JoinAllocation allocation;
 

@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
@@ -16,12 +19,12 @@ public class HostManager : MonoBehaviour
     [SerializeField] private int maxConnections = 4;
     [SerializeField] private string characterSelectSceneName = "CharacterSelect";
     [SerializeField] private string gameplaySceneName = "GamePlay";
-
-    
     
     public static HostManager Instance { get; private set; }
 
     private bool gameHasStarted;
+
+    private string lobbyId;
     
     public Dictionary<ulong,ClientData> ClientData { get; private set; }
     public string JoinCode { get; private set; }
@@ -71,6 +74,30 @@ public class HostManager : MonoBehaviour
         
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
+        //lobby
+        try
+        {
+            var createLobbyOptions = new CreateLobbyOptions();
+            createLobbyOptions.IsPrivate = false;
+            createLobbyOptions.Data = new Dictionary<string, DataObject>()
+            {
+                {
+                    "JoinCode", new DataObject(
+                        visibility: DataObject.VisibilityOptions.Member,
+                        value: JoinCode)
+                }
+            };
+
+            Lobby lobby = await Lobbies.Instance.CreateLobbyAsync("MyLobby", maxConnections, createLobbyOptions);
+            lobbyId = lobby.Id;
+            StartCoroutine(HeartBeatLobbyCoroutine(15));
+        }
+        catch(LobbyServiceException e)
+        {
+            Debug.Log(e);
+            throw;
+        }
+
         NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
         NetworkManager.Singleton.OnServerStarted += OnNetworkReady;
 
@@ -78,7 +105,17 @@ public class HostManager : MonoBehaviour
         
         NetworkManager.Singleton.StartHost();
     }
-    
+
+    private IEnumerator HeartBeatLobbyCoroutine(float waitTimeSeconds)
+    {
+        var delay = new WaitForSeconds(waitTimeSeconds);
+        while (true)
+        {
+            Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
+            yield return delay;
+        }
+    }
+
     private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest arg1, NetworkManager.ConnectionApprovalResponse arg2)
     {
         if (ClientData.Count >= 3 || gameHasStarted)

@@ -26,10 +26,10 @@ namespace ReadyPlayerMe.NetcodeSupport
                 
             });
 
-            clientButton.onClick.AddListener(() =>
+            clientButton.onClick.AddListener(async () =>
             {
                 Debug.Log("start client");
-                ClientManager.Instance.StartClient(joinCodeInputField.text);
+                await ClientManager.Instance.StartClient(joinCodeInputField.text);
             });
             
         }

@@ -50,10 +50,10 @@ using UnityEngine.SceneManagement;
         
         public void StartClient()
         {
-            clientButton.onClick.AddListener(() =>
+            clientButton.onClick.AddListener(async () =>
             {
                 Debug.Log("start client");
-                ClientManager.Instance.StartClient(joinCodeInputField.text);
+                await ClientManager.Instance.StartClient(joinCodeInputField.text);
             });
         }
         
