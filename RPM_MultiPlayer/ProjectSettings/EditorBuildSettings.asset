@@ -24,16 +24,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/AvatarControl_HY 3_Spawn 1.unity
     guid: e9f683b86da85be419687bee52f149ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AvatarControl_HY 4_Spawn_Dino.unity
     guid: fc3194ce9c785cc40a7a6fd10fdf3542
+  - enabled: 1
+    path: Assets/Scenes/AvatarControl_YM 4_Spawn_Dino 1.unity
+    guid: cb1ade7aa423adf4384228585cb5cbdb
   - enabled: 1
     path: Assets/Scenes/CharacterSelect.unity
     guid: b10bcba751ff4a647a579236cfd2a9ad
   - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: d500afa535bfd674ba03c99382308b88
-  - enabled: 1
-    path: Assets/Scenes/AvatarControl_YM 4_Spawn_Dino 1.unity
-    guid: cb1ade7aa423adf4384228585cb5cbdb
   m_configObjects: {}
