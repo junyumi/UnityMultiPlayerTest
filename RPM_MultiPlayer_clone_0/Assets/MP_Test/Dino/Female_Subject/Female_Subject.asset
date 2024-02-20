@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b683e411c83864bb7df9396a7c1308, type: 3}
+  m_Name: Female_Subject
+  m_EditorClassIdentifier: 
+  id: 2
+  displayName: Female_Subject
+  icon: {fileID: 21300000, guid: ff2699f33f43c9346979d8f7b8be20e5, type: 3}
+  introPrefab: {fileID: 7720267085172302752, guid: 7445667b063d4174cb201bf4f8e6cc5b,
+    type: 3}
+  gameplayerPrefab: {fileID: 1501215960883650453, guid: b857d459753fe57468523934ae15de52,
+    type: 3}
