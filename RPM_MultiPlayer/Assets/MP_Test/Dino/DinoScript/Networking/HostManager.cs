@@ -1,29 +1,32 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using ReadyPlayerMe.Core;
 using Unity.Netcode;
-using UnityEditor.PackageManager;
+using Unity.Netcode.Transports.UTP;
+using Unity.Networking.Transport.Relay;
+using Unity.Services.Relay;
+using Unity.Services.Relay.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ServerManager : MonoBehaviour
+public class HostManager : MonoBehaviour
 {
     // 싱글 톤
-    
-    [Header("Settings")]
-    [SerializeField] private string gameplaySceneName = "GamePlay";
+
+    [Header("Settings")] 
+    [SerializeField] private int maxConnections = 4;
     [SerializeField] private string characterSelectSceneName = "CharacterSelect";
+    [SerializeField] private string gameplaySceneName = "GamePlay";
+
     
     
-    public static ServerManager Instance { get; private set; }
+    public static HostManager Instance { get; private set; }
 
     private bool gameHasStarted;
     
     public Dictionary<ulong,ClientData> ClientData { get; private set; }
-    
-    
+    public string JoinCode { get; private set; }
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -37,22 +40,38 @@ public class ServerManager : MonoBehaviour
         }
     }
 
-    public void StartServer()
+    public async void StartHost()
     {
-        //연결 조건에 맞는지 확인하는
-        NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
+        Allocation allocation;
 
-        NetworkManager.Singleton.OnServerStarted += OnNetworkReady;
+        try
+        {
+            allocation = await RelayService.Instance.CreateAllocationAsync(maxConnections); 
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Relay create allocation request failed {e.Message}");
+            throw;
+        }
+
+        Debug.Log($"server : {allocation.ConnectionData[0]} {allocation.ConnectionData[1]}");
+        Debug.Log($"server : {allocation.AllocationId}");
+
+        try
+        {
+            JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+        }
+        catch
+        {
+            Debug.LogError("Relay get join code request failed");
+            throw;
+        }
+
+        var relayServerData = new RelayServerData(allocation, "dtls");
         
-        NetworkManager.Singleton.StartServer();
-    }
+        NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-
-
-    public void StartHost()
-    {
         NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
-        
         NetworkManager.Singleton.OnServerStarted += OnNetworkReady;
 
         ClientData = new Dictionary<ulong, ClientData>();

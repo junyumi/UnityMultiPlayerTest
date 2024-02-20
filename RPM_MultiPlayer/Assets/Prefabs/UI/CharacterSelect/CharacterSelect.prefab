@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1618420298997791535
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6312081671172600650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1978060614
+  GlobalObjectIdHash: 1160812906
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -675,6 +675,8 @@ MonoBehaviour:
   - {fileID: 3225878264312054177}
   characterInfoPanel: {fileID: 4988961592506185695}
   characterNameText: {fileID: 2639165491910649154}
+  introSpawnPoint: {fileID: 0}
+  lockInButton: {fileID: 0}
 --- !u!1 &8217383016174483512
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7770359496361891531
 RectTransform:
   m_ObjectHideFlags: 0
