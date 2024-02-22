@@ -34,12 +34,12 @@ EditorBuildSettings:
     path: Assets/Scenes/AvatarControl_HY 5_Relay.unity
     guid: 00e0d76126870f643a5b24df28b6fcce
   - enabled: 1
-    path: Assets/Scenes/CharacterSelect.unity
+    path: Assets/MP_Test/Scenes/CharacterSelect.unity
     guid: b10bcba751ff4a647a579236cfd2a9ad
   - enabled: 1
-    path: Assets/Scenes/GamePlay.unity
+    path: Assets/MP_Test/Scenes/GamePlay.unity
     guid: d500afa535bfd674ba03c99382308b88
   - enabled: 1
-    path: Assets/Scenes/AvatarControl_HY 6_Lobby.unity
+    path: Assets/MP_Test/Scenes/AvatarControl_HY 6_Lobby.unity
     guid: 3c287f22758202e498be0b0988d389fb
   m_configObjects: {}

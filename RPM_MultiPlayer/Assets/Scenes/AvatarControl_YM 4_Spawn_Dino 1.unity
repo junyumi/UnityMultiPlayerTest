@@ -970,6 +970,117 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226022312}
   m_CullTransparentMesh: 1
+--- !u!1001 &1243595878
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2806406371496515554, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_Name
+      value: VivoxManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 337.1496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 110.185265
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.143707
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434883516110328139, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2806406371496515554, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1243595881}
+    - targetCorrespondingSourceObject: {fileID: 2806406371496515554, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1243595880}
+  m_SourcePrefab: {fileID: 100100000, guid: 4a0fba5a3006b5d4eaf2f09e9191461e, type: 3}
+--- !u!1 &1243595879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2806406371496515554, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1243595878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1243595880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243595879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccec6cc900e83f41aade135fe997e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: 
+  _issuer: 
+  _domain: 
+  _server: 
+--- !u!114 &1243595881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243595879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6ab9821610f4b4687ffabf7104f755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VoiceChannelName: Yumichannel
 --- !u!1 &1391436819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,7 +1521,9 @@ MonoBehaviour:
   hostButton: {fileID: 358973240}
   clientButton: {fileID: 2097514218}
   serverButton: {fileID: 805225378}
-  gameplaySceneName: Gameplay
+  connectingPanel: {fileID: 0}
+  menuPanel: {fileID: 0}
+  joinCodeInputField: {fileID: 0}
 --- !u!1 &1970887939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,6 +2388,7 @@ SceneRoots:
   - {fileID: 1391436822}
   - {fileID: 2021742383}
   - {fileID: 1934995069}
+  - {fileID: 1243595878}
   - {fileID: 1606188385}
   - {fileID: 5634591147525060963}
   - {fileID: 705507995}
