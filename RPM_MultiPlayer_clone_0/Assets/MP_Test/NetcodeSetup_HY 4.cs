@@ -36,7 +36,7 @@ namespace ReadyPlayerMe.NetcodeSupport
             clientButton.onClick.AddListener(() =>
             {
                 Debug.Log("start client");
-                NetworkManager.Singleton.StartClient();
+                ServerManager.Instance.StartClient();
             });
             
         }

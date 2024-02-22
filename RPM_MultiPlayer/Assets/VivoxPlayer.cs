@@ -12,10 +12,7 @@ using UnityEngine.UI;
 public class VivoxPlayer : MonoBehaviour
 {
     private VivoxParticipant localParticipant;
-    
-  // 로그인 기능
-    public GameObject button;
-    
+
     private int PermissionAskedCount;
 
     [SerializeField] public string VoiceChannelName = "Yumichannel";
@@ -35,7 +32,7 @@ public class VivoxPlayer : MonoBehaviour
         VivoxService.Instance.ChannelLeft += OnChannelDisconnected;
 
 
-        if (button != null) button.GetComponent<Button>().onClick.AddListener(() => LoginToVivoxService());
+     
     }
 
   
@@ -50,7 +47,7 @@ public class VivoxPlayer : MonoBehaviour
         VivoxService.Instance.ChannelLeft -= OnChannelDisconnected;
     }
 
-    void LoginToVivoxService()
+    public void LoginToVivoxService()
     {
         if (IsMicPermissionGranted())
         {
@@ -71,11 +68,8 @@ public class VivoxPlayer : MonoBehaviour
                 AskForPermissions();
             }
         }
-
-       button.SetActive(false);
-
     }
-    
+
     async void LoginToVivox()
     {
        
@@ -86,7 +80,7 @@ public class VivoxPlayer : MonoBehaviour
 
         };
         await VivoxService.Instance.LoginAsync(loginOptions);
-        Debug.Log(loginOptions.DisplayName);
+        Debug.Log(loginOptions.DisplayName + " , "+NetworkManager.Singleton.LocalClientId);
         
     }
     
@@ -159,6 +153,8 @@ public class VivoxPlayer : MonoBehaviour
 
             //Debug.Log("local "+localParticipant.PlayerId + " audio"+localParticipant.AudioEnergy);
 
+            //LoginToVivoxService();
+                
             localParticipant.ParticipantSpeechDetected += OnSpeechDetected;
             localParticipant.ParticipantAudioEnergyChanged += OnEnergyDetected;
 
@@ -189,7 +185,7 @@ public class VivoxPlayer : MonoBehaviour
     void OnEnergyDetected()
     {
         
-        Debug.Log(NetworkManager.Singleton.LocalClientId+"EnergyDetected "+localParticipant.AudioEnergy);
+//        Debug.Log(NetworkManager.Singleton.LocalClientId+"EnergyDetected "+localParticipant.AudioEnergy);
        
         
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using ReadyPlayerMe.Core;
 using Unity.Netcode;
+using Unity.Services.Vivox;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,8 @@ public class ServerManager : MonoBehaviour
     public static ServerManager Instance { get; private set; }
 
     private bool gameHasStarted;
+
+    private VivoxPlayer _vivoxPlayer;
     
     public Dictionary<ulong,ClientData> ClientData { get; private set; }
     
@@ -35,6 +38,8 @@ public class ServerManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        _vivoxPlayer = FindObjectOfType<VivoxPlayer>();
     }
 
     public void StartServer()
@@ -58,6 +63,16 @@ public class ServerManager : MonoBehaviour
         ClientData = new Dictionary<ulong, ClientData>();
         
         NetworkManager.Singleton.StartHost();
+        
+        _vivoxPlayer.LoginToVivoxService();
+        
+
+    }
+
+    public void StartClient()
+    {
+        NetworkManager.Singleton.StartClient();
+        _vivoxPlayer.LoginToVivoxService();
     }
     
     private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest arg1, NetworkManager.ConnectionApprovalResponse arg2)

@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49edf547847f6d74295d39d3223af3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 1940526003}
+  button: {fileID: 1940526001}
   VoiceChannelName: Yumichannel
 --- !u!1 &1391436819
 GameObject:
