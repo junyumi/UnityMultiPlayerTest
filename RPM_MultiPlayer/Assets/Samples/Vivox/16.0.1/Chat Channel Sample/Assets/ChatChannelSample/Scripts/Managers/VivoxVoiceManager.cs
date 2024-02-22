@@ -7,7 +7,6 @@ using Unity.Services.Authentication;
 
 public class VivoxVoiceManager : MonoBehaviour
 {
-    
     public const string LobbyChannelName = "lobbyChannel";
 
     // Check to see if we're about to be destroyed.
@@ -63,6 +62,10 @@ public class VivoxVoiceManager : MonoBehaviour
             Debug.LogWarning("Multiple VivoxVoiceManager detected in the scene. Only one VivoxVoiceManager can exist at a time. The duplicate VivoxVoiceManager will be destroyed.");
             Destroy(this);
             return;
+        }else
+        {
+            m_Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         var options = new InitializationOptions();
@@ -83,7 +86,7 @@ public class VivoxVoiceManager : MonoBehaviour
 #endif
 
         Debug.Log("progress in sigin In");
-        //await VivoxService.Instance.InitializeAsync();
+        await VivoxService.Instance.InitializeAsync();
     }
 
     bool CheckManualCredentials()
