@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class VivoxPlayer : MonoBehaviour
 {
+    private VivoxParticipant localParticipant;
+    
   // 로그인 기능
     public GameObject button;
     
@@ -22,8 +24,7 @@ public class VivoxPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-        button.GetComponent<Button>().onClick.AddListener(()=>{LoginToVivoxService();});
+        
         
         VivoxService.Instance.LoggedIn += OnUserLoggedIn;
         VivoxService.Instance.LoggedOut += OnUserLoggedOut;
@@ -32,7 +33,9 @@ public class VivoxPlayer : MonoBehaviour
         VivoxService.Instance.ParticipantRemovedFromChannel += OnParticipantRemoved;
         VivoxService.Instance.LoggedOut += OnUserLoggedOut;
         VivoxService.Instance.ChannelLeft += OnChannelDisconnected;
-        
+
+
+        if (button != null) button.GetComponent<Button>().onClick.AddListener(() => LoginToVivoxService());
     }
 
   
@@ -69,7 +72,7 @@ public class VivoxPlayer : MonoBehaviour
             }
         }
 
-        button.SetActive(false);
+       button.SetActive(false);
 
     }
     
@@ -139,7 +142,27 @@ public class VivoxPlayer : MonoBehaviour
         Debug.Log("LOGGED" + VivoxService.Instance.ActiveChannels.Count);
         await JoinLobbyChannel();
         Debug.Log("LOGGED with channel" + VivoxVoiceManager.LobbyChannelName+ " , "+VivoxService.Instance.ActiveChannels.FirstOrDefault().ToString());
-       // _vivoxAnimationManager.LogginSuccess();
+
+        SuccessToLogin();
+        
+    }
+
+
+    private void SuccessToLogin()
+    {
+        if (VivoxService.Instance.ActiveChannels.Count > 0)
+        {
+            Debug.Log("--"+VivoxService.Instance.ActiveChannels.Count);
+            var channel = VivoxService.Instance.ActiveChannels.FirstOrDefault();
+            
+            localParticipant = channel.Value.FirstOrDefault(p => p.IsSelf);
+
+            //Debug.Log("local "+localParticipant.PlayerId + " audio"+localParticipant.AudioEnergy);
+
+            localParticipant.ParticipantSpeechDetected += OnSpeechDetected;
+            localParticipant.ParticipantAudioEnergyChanged += OnEnergyDetected;
+
+        }
     }
 
     private void OnChannelDisconnected(string obj)
@@ -163,9 +186,25 @@ public class VivoxPlayer : MonoBehaviour
         return VivoxService.Instance.JoinGroupChannelAsync(VivoxVoiceManager.LobbyChannelName, ChatCapability.TextAndAudio);
     }
     
-    // Update is called once per frame
-    void Update()
+    void OnEnergyDetected()
     {
+        
+        Debug.Log(NetworkManager.Singleton.LocalClientId+"EnergyDetected "+localParticipant.AudioEnergy);
+       
+        
+    }
+    
+    /*
+     *  audio 스피치 가 되는지 안되는지
+     * 말 하면 true 안하면 false 
+     */
+    void OnSpeechDetected()
+    {
+        Debug.Log("speechDetected "+localParticipant.SpeechDetected);
+        if (localParticipant.SpeechDetected)
+        {
+            //_avatarControl.c3AvatarGazing();
+        }
         
     }
 }
