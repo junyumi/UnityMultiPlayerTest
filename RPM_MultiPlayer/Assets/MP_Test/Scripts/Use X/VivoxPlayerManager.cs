@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +6,31 @@ using Unity.Netcode;
 using Unity.Services.Vivox;
 using UnityEngine;
 using UnityEngine.Android;
-using UnityEngine.UI;
 
-public class VivoxPlayer : MonoBehaviour
+public class VivoxPlayerManager : MonoBehaviour
 {
+    
+    public static VivoxPlayerManager Instance { get; private set; }
+    
     private VivoxParticipant localParticipant;
 
     private int PermissionAskedCount;
 
     [SerializeField] public string VoiceChannelName = "Yumichannel";
     
-    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

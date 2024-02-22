@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282099980}
-  - component: {fileID: 282099979}
+  - component: {fileID: 282099981}
   m_Layer: 0
   m_Name: ServerManager
   m_TagString: Untagged
@@ -215,20 +215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &282099979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282099978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3cbe4f9bf52724a8e4426fe343f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameplaySceneName: GamePlay
-  characterSelectSceneName: CharacterSelect
 --- !u!4 &282099980
 Transform:
   m_ObjectHideFlags: 0
@@ -244,6 +230,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &282099981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282099978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e83df1a7bc9e649ab97990ced9ece9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxConnections: 4
+  characterSelectSceneName: CharacterSelect
+  gameplaySceneName: GamePlay
 --- !u!1 &358973238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,51 +1037,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2806406371496515554, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1243595881}
-    - targetCorrespondingSourceObject: {fileID: 2806406371496515554, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1243595880}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a0fba5a3006b5d4eaf2f09e9191461e, type: 3}
---- !u!1 &1243595879 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2806406371496515554, guid: 4a0fba5a3006b5d4eaf2f09e9191461e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1243595878}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1243595880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243595879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ccec6cc900e83f41aade135fe997e45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _key: 
-  _issuer: 
-  _domain: 
-  _server: 
---- !u!114 &1243595881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243595879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed6ab9821610f4b4687ffabf7104f755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VoiceChannelName: Yumichannel
 --- !u!1 &1391436819
 GameObject:
   m_ObjectHideFlags: 0

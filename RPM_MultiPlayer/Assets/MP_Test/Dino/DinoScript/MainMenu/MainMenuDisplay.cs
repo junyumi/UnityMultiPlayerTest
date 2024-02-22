@@ -11,6 +11,10 @@ using UnityEngine.SceneManagement;
 
     public class MainMenuDisplay : MonoBehaviour
     {
+        
+        private VivoxPlayerManager _vivoxPlayer;
+        
+        
         [SerializeField] private Button hostButton;
         [SerializeField] private Button clientButton;
         [SerializeField] private GameObject connectingPanel;
@@ -18,10 +22,12 @@ using UnityEngine.SceneManagement;
         [SerializeField] private TMP_InputField joinCodeInputField;
         private async void Start()
         {
+            _vivoxPlayer = FindObjectOfType<VivoxPlayerManager>();
+            
             try
             {
-                await UnityServices.InitializeAsync();
-                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                //await UnityServices.InitializeAsync();
+                //await AuthenticationService.Instance.SignInAnonymouslyAsync();
                 Debug.Log($"Player Id: {AuthenticationService.Instance.PlayerId}");
             }
             catch (Exception e)
@@ -45,6 +51,7 @@ using UnityEngine.SceneManagement;
                 
                 HostManager.Instance.StartHost();
                 
+                _vivoxPlayer.LoginToVivoxService();
             });
         }
         
@@ -54,6 +61,7 @@ using UnityEngine.SceneManagement;
             {
                 Debug.Log("start client");
                 await ClientManager.Instance.StartClient(joinCodeInputField.text);
+                _vivoxPlayer.LoginToVivoxService();
             });
         }
         

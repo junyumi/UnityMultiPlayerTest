@@ -16,6 +16,8 @@ namespace ReadyPlayerMe.NetcodeSupport
         [SerializeField] private GameObject connectingPanel;
         [SerializeField] private GameObject menuPanel;
         [SerializeField] private TMP_InputField joinCodeInputField;
+
+        private VivoxPlayerManager _vivoxPlayer;
         private void Start()
         {
             hostButton.onClick.AddListener(() =>
@@ -24,12 +26,17 @@ namespace ReadyPlayerMe.NetcodeSupport
                 
                 HostManager.Instance.StartHost();
                 
+                _vivoxPlayer.LoginToVivoxService();
+                
+
             });
 
             clientButton.onClick.AddListener(async () =>
             {
                 Debug.Log("start client");
                 await ClientManager.Instance.StartClient(joinCodeInputField.text);
+                
+                _vivoxPlayer.LoginToVivoxService();
             });
             
         }
