@@ -26,8 +26,13 @@ using UnityEngine.SceneManagement;
             
             try
             {
+                /*
+                 * already sign in unity services
+                 * In VivoxVoiceManager !
+                 */
                 //await UnityServices.InitializeAsync();
-                //await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                //Debug.Log("initializeasync in login in lobby");
+                //await AuthenticationService.Instance.SignInAnonymouslyAsync();;
                 Debug.Log($"Player Id: {AuthenticationService.Instance.PlayerId}");
             }
             catch (Exception e)

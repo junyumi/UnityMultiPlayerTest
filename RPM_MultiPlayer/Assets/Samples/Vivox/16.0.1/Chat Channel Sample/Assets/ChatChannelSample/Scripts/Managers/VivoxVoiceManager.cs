@@ -74,12 +74,14 @@ public class VivoxVoiceManager : MonoBehaviour
 #if AUTH_PACKAGE_PRESENT
         if (!CheckManualCredentials())
         {
+            Debug.Log("sign in anonymous");
             AuthenticationService.Instance.ClearSessionToken();
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
 #endif
 
         await VivoxService.Instance.InitializeAsync();
+        Debug.Log("initializeasync in login");
     }
 
     bool CheckManualCredentials()
